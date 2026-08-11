@@ -29,14 +29,15 @@ jobs:
         run: |
           make ARCH=arm64 SUBARCH=arm64 CC=clang LD=ld.lld LLVM=1 LLVM_IAS=1 marble_defconfig
 
-      - name: Compile Kernel Image
+      - name: Compile Kernel Image.gz
         run: |
-          make -j$(nproc --all) ARCH=arm64 CC=clang LD=ld.lld LLVM=1 LLVM_IAS=1 Image
+          make -j$(nproc --all) ARCH=arm64 CC=clang LD=ld.lld LLVM=1 LLVM_IAS=1 Image.gz
 
       - name: Package AnyKernel3 Zip
         run: |
           mkdir -p anykernel_out
-          cp arch/arm64/boot/Image anykernel_out/Image
+          rm -f anykernel_out/Image anykernel_out/Image.gz
+          cp arch/arm64/boot/Image.gz anykernel_out/Image.gz
           cp -r tools anykernel_out/ 2>/dev/null || true
           cp anykernel.sh anykernel_out/ 2>/dev/null || true
           cp banner anykernel_out/ 2>/dev/null || true
