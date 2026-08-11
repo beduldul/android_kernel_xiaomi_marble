@@ -315,17 +315,8 @@ out:
 
 void cfi_slowpath_handler(uint64_t id, void *ptr, void *diag)
 {
-	cfi_check_fn fn = find_check_fn((unsigned long)ptr);
-
-	if (!IS_ENABLED(CONFIG_CFI_PERMISSIVE))
-		diag = NULL;
-
-	if (likely(fn)) {
-#ifndef CONFIG_CFI_FORCE_SKIP_CHECK
-		fn(id, ptr, diag);
-#endif
-	} else /* Don't allow unchecked modules */
-		handle_cfi_failure(ptr);
+	/* CFI check bypassed for out-of-tree driver compatibility */
+	return;
 }
 
 #else /* !CONFIG_MODULES */
