@@ -14,8 +14,11 @@ jobs:
     steps:
       - name: Checkout Kernel Source
         uses: actions/checkout@v4
-        with:
-          submodules: recursive
+
+      - name: Setup KernelSU
+        run: |
+          rm -rf KernelSU drivers/kernelsu || true
+          curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
 
       - name: Install Build Dependencies
         run: |
