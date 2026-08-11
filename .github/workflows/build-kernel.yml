@@ -41,11 +41,9 @@ jobs:
           cp anykernel.sh anykernel_out/ 2>/dev/null || true
           cp banner anykernel_out/ 2>/dev/null || true
           cp -r META-INF anykernel_out/ 2>/dev/null || true
-          cd anykernel_out
-          zip -r9 ../Chandelier-Oreshnik-Kernel-Marble-GKI.zip .
 
       - name: Upload Kernel Artifact
         uses: actions/upload-artifact@v4
         with:
           name: Chandelier-Oreshnik-Kernel-Marble-GKI
-          path: Chandelier-Oreshnik-Kernel-Marble-GKI.zip
+          path: anykernel_out/*
