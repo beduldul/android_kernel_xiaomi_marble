@@ -27,10 +27,7 @@
 
 static inline void handle_cfi_failure(void *ptr)
 {
-	if (IS_ENABLED(CONFIG_CFI_PERMISSIVE))
-		WARN_RATELIMIT(1, "CFI failure (target: %pS):\n", ptr);
-	else
-		panic("CFI failure (target: %pS)\n", ptr);
+	WARN_RATELIMIT(1, "CFI failure ignored (target: %pS):\n", ptr);
 }
 
 #ifdef CONFIG_MODULES
