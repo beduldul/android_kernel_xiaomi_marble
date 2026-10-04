@@ -1,3 +1,4 @@
+[![build](https://github.com/beduldul/android_kernel_xiaomi_marble/actions/workflows/build-kernel.yml/badge.svg)](https://github.com/beduldul/android_kernel_xiaomi_marble/actions/workflows/build-kernel.yml)
 # Android GKI Kernel for Xiaomi POCO F5 (marble)
 
 Custom Linux 5.10 GKI (Google Kernel Image) kernel source tree for Xiaomi POCO F5 (`marble` / Snapdragon 7+ Gen 2), optimized for low latency, high throughput, and full GKI ABI compatibility.
